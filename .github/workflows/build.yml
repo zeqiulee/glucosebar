@@ -70,6 +70,10 @@ jobs:
           RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || inputs.release_tag }}
         shell: bash
         run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            printf 'Release already exists; preserving its state and assets.\n'
+            exit 0
+          fi
           task_tag_args=(--verify-tag)
           if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
             # A fresh tag prevents attaching newly built assets to a different existing revision.

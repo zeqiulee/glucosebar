@@ -48,7 +48,7 @@ jobs:
           task_version="$(tr -d '[:space:]' < VERSION)"
           task_version_pattern="${task_version//./\\.}"
           [[ "$RELEASE_TAG" =~ ^v${task_version_pattern}(-beta\.[1-9][0-9]*)?$ ]] || { printf 'Tag does not match VERSION.\n' >&2; exit 1; }
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: GlucoseBar-macOS-*
           path: dist

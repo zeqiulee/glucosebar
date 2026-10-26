@@ -48,6 +48,7 @@ GLUCOSEBAR_NOTARY_PROFILE='YOUR_EXISTING_PROFILE' \
 
 - PR 和 `main`：运行公开内容模式检查、合成核心测试，分别交叉构建 arm64/x86_64；默认不接触发布证书。
 - `vX.Y.Z` 或 `vX.Y.Z-beta.N`：必须与 VERSION 一致；构建通过后仅创建 **draft prerelease**，不自动公开。
+- 在 GitHub 手动运行工作流也能准备草稿：选择 `main`，填写可选的 `release_tag`。留空时只测试和构建；非空且格式、版本匹配时，两架构构建成功后为本次运行的提交创建新标签及草稿预发布。其他分支不能通过此入口创建 Release。
 - Actions 构建目前均未公证。正式公证流程在本地完成后，可把经过验证的资产上传到草稿；不要错误混用 signed/unnotarized 资产。
 - 第三方 Actions 用版本标签，由 Dependabot 提醒更新；后续可锁定经过核查的提交 SHA。
 
@@ -57,6 +58,15 @@ GLUCOSEBAR_NOTARY_PROFILE='YOUR_EXISTING_PROFILE' \
 git tag v0.7.0-beta.1
 git push origin v0.7.0-beta.1
 ```
+
+没有配置本地 Git 推送时，可用网页入口：
+
+1. 打开仓库 **Actions → Build GlucoseBar → Run workflow**。
+2. 将分支选为 **main**，在 `release_tag` 输入与 VERSION 匹配且尚未使用的标签，例如 `v0.7.0-beta.1`。
+3. 点击 Run workflow，等待 arm64 与 x86_64 两个构建、测试和校验和检查全部成功。
+4. 到 Releases 查看生成的 **Draft / Pre-release**，核对说明与资产。手动入口只创建草稿，不直接公开。
+
+手动入口将标签指向本次运行的准确提交。为避免资产和已有标签指向不同版本，已存在的标签会被拒绝；需要重做时先检查原运行状态，再选择新的 `beta.N`，不要覆盖已公开版本。通过推送标签触发时则要求标签本来已经存在。
 
 ## 公开前人工核对
 

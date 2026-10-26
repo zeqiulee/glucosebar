@@ -2,6 +2,8 @@
 
 **在 Mac 菜单栏，一眼看到血糖趋势。**
 
+[![Build GlucoseBar](https://github.com/zeqiulee/glucosebar/actions/workflows/build.yml/badge.svg)](https://github.com/zeqiulee/glucosebar/actions/workflows/build.yml)
+
 面向国内版「硅基动感」GS1 用户的原生 macOS 工具。iPhone 继续接收和上传数据，GlucoseBar 读取你本人的云端记录，在 Mac 上显示读数、趋势箭头和历史曲线。
 
 [English](README.en.md) · [开始使用](docs/getting-started.zh-CN.md) · [隐私说明](PRIVACY.md) · [MIT 许可证](LICENSE) · [反馈问题](https://github.com/zeqiulee/glucosebar/issues/new/choose)

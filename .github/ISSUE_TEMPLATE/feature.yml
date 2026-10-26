@@ -1,0 +1,24 @@
+name: Feature request / 功能建议
+description: 描述使用场景和问题，再讨论方案。
+title: "[Idea] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 希望解决什么问题？
+      description: 无需真实读数或个人病史。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案或替代办法
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 隐私检查
+      options:
+        - label: 内容不含凭证、账号/设备标识或真实健康记录。
+          required: true

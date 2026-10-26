@@ -1,0 +1,57 @@
+name: Bug report / 问题反馈
+description: 安装、连接或显示问题；不要提交凭证或真实健康记录。
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这是公开反馈。不要上传 token、Authorization/Cookie、HAR/PCAP、云端 JSON、真实血糖、账号或传感器编号。
+        尽量使用演示模式和合成数据。安全漏洞请按 SECURITY.md 私下报告。
+  - type: input
+    id: version
+    attributes:
+      label: GlucoseBar 版本
+      description: 设置底部查看；源码构建附 commit。
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS 版本
+    validations:
+      required: true
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Mac 芯片
+      options: [Apple Silicon (M 系列), Intel, 不确定]
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题类型
+      options: [安装或启动, 首次连接, 凭证失效, 曲线或数值显示, 断网或缓存, 其他]
+    validations:
+      required: true
+  - type: dropdown
+    id: demo
+    attributes:
+      label: 演示模式也能复现吗？
+      options: [是, 否, 尚未尝试或不适用]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤、预期和实际结果
+      description: 只需脱敏步骤及静态错误文字，不需要真实记录和抓包。
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 发布前检查
+      options:
+        - label: 我已移除凭证、请求头、抓包文件、健康记录和设备/账号标识。
+          required: true
